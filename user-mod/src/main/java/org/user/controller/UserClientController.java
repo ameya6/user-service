@@ -21,7 +21,7 @@ public class UserClientController {
     @Autowired
     private UserClientService userService;
 
-    @PostMapping(value = "/create", produces = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(value = "/create", consumes = MediaType.ALL_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<UserClientResponse> create(@RequestBody UserClientRequest userRequest) {
         try {
             return ResponseEntity.ok(userService.create(userRequest));

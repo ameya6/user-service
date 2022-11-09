@@ -5,9 +5,9 @@ import lombok.experimental.SuperBuilder;
 
 import java.util.UUID;
 
-@AllArgsConstructor
 @SuperBuilder
 @Data
+@AllArgsConstructor
 public class UserAPIResponse extends UserResponse{
     private UUID id;
 

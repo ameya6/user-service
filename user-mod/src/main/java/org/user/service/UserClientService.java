@@ -4,7 +4,9 @@ import lombok.extern.log4j.Log4j2;
 import org.data.model.entity.User;
 import org.data.model.request.UserClientRequest;
 import org.data.model.response.UserClientResponse;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.user.UserDao;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
@@ -13,8 +15,12 @@ import java.util.UUID;
 @Log4j2
 public class UserClientService {
 
+    @Autowired
+    private UserDao userDao;
+
     public UserClientResponse create(UserClientRequest userRequest) {
         User user = createUser(userRequest);
+        userDao.save(user);
         UserClientResponse response = createUserResponse(user);
         log.info(user + " " + response);
         return response;
@@ -33,7 +39,7 @@ public class UserClientService {
     private User createUser(UserClientRequest request) {
         return User.builder()
                 .email(request.getEmail())
-                .id(UUID.randomUUID())
+                .userId(UUID.randomUUID())
                 .firstName(request.getFirstName())
                 .lastName(request.getLastName())
                 .username(request.getUsername())
