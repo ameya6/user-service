@@ -15,6 +15,12 @@ import java.util.UUID;
 @Table(name = "users")
 public class User {
 
+    static {
+        KEY = "user:";
+    }
+
+    public final static String KEY;
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

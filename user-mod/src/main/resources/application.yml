@@ -2,8 +2,12 @@ server:
   port: 9010
 
 database:
-  url: "jdbc:postgresql://192.168.0.106:26257/user_data"
+  url: "jdbc:postgresql://192.168.0.107:26257/user_data"
   username: "root"
   password: "root"
   driver: "org.postgresql.Driver"
   modelPackage: "org.data.model"
+
+redis:
+  url: "192.168.0.107"
+  port: 6399
