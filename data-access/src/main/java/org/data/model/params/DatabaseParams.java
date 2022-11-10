@@ -1,4 +1,4 @@
-package org.data.model.entity;
+package org.data.model.params;
 
 import lombok.*;
 import org.springframework.boot.context.properties.ConfigurationProperties;

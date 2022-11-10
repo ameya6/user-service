@@ -2,9 +2,20 @@ package org.data.model.request;
 
 import lombok.*;
 import lombok.experimental.SuperBuilder;
+import java.io.Serializable;
 
 @AllArgsConstructor
 @SuperBuilder
-@Data
-public class UserClientRequest extends UserRequest{
+@Setter
+@Getter
+public class UserClientRequest extends UserRequest implements Serializable {
+    @Override
+    public String toString() {
+        return "UserClientRequest{" +
+                "username='" + username + '\'' +
+                ", email='" + email + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                '}';
+    }
 }
