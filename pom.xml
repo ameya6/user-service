@@ -11,6 +11,7 @@
     <modules>
         <module>user-mod</module>
         <module>data-access</module>
+        <module>spark-mod</module>
     </modules>
 
     <properties>
@@ -42,6 +43,10 @@
                 <exclusion>
                     <groupId>org.springframework.boot</groupId>
                     <artifactId>spring-boot-starter-logging</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.apache.loggin.log4j</groupId>
+                    <artifactId>*</artifactId>
                 </exclusion>
             </exclusions>
             <version>2.7.5</version>
