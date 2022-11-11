@@ -21,7 +21,7 @@ import java.util.stream.Stream;
 @Log4j2
 public class UserRequestSpark implements Serializable {
     public static void main(String[] args) {
-        String file = "/home/ameya/Downloads/fbnames/names/xah";
+        String file = "fbnames/names/xah";
 
         JavaSparkContext sc = sparkContext();
 
