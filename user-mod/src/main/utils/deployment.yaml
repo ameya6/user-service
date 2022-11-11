@@ -1,0 +1,70 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: user-service-config
+data:
+  application.yml: |
+    database:
+      url: "jdbc:postgresql://192.168.0.107:26257/user_data"
+      username: "root"
+      password: "root"
+      driver: "org.postgresql.Driver"
+      modelPackage: "org.data.model"
+    server:
+      port: 9010
+    redis:
+      url: "192.168.0.107"
+      port: 6399
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: user-service-depl
+spec:
+  selector:
+    matchLabels:
+      app: user-service-depl
+  minReadySeconds: 5
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+  replicas: 10
+  template:
+    metadata:
+      labels:
+        app: user-service-depl
+    spec:
+      containers:
+        - name: user-service-pod
+          image: ameya1/user-service:latest
+          ports:
+            - containerPort: 9010
+          volumeMounts:
+            - name: user-service-vol
+              mountPath: /config
+      volumes:
+        - name: user-service-vol
+          configMap:
+            name: user-service-config
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: user-service-svc
+spec:
+  selector:
+    app: user-service-depl
+  ports:
+    - protocol: "TCP"
+      port: 80
+      targetPort: 9010
+  type: LoadBalancer
+
+
+
