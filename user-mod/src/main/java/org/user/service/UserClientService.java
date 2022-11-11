@@ -19,11 +19,18 @@ public class UserClientService {
     private UserDao userDao;
 
     public UserClientResponse create(UserClientRequest userRequest) {
+        UserClientResponse response = null;
         User user = createUser(userRequest);
-        userDao.save(user);
-        UserClientResponse response = createUserResponse(user);
-        log.info(user + " " + response);
-        return response;
+        try {
+            userDao.save(user);
+            response = createUserResponse(user);
+            //log.info(user + " " + response);
+        } catch (Exception e) {
+            log.error("Exception : " + e.getMessage(), e);
+            log.error(user + " " + userRequest);
+        } finally {
+            return response;
+        }
     }
 
     private UserClientResponse createUserResponse(User user){
