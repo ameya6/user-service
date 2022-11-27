@@ -12,7 +12,7 @@ import java.util.UUID;
 @Builder
 @ToString
 @Entity
-@Table(name = "users")
+@Table(name = "user_info")
 public class User {
 
     static {
@@ -42,6 +42,10 @@ public class User {
 
     @Column(name = "created_at", nullable = false)
     private LocalDateTime createdAt;
+
+    @Column(name = "status", nullable = false)
+    @Enumerated(EnumType.STRING)
+    private UserStatus status;
 
     public User() {}
 }
