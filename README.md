@@ -37,7 +37,7 @@
 
 ### Architecture Diagram
 
-![](https://33333.cdn.cke-cs.com/kSW7V9NHUXugvhoQeFaf/images/1512ed54e78f512857f427b3f36b8d73356ad35403ace124.jpeg)
+![](https://user-images.githubusercontent.com/117295903/206179875-9cf0a258-c201-4378-a72a-98c9190cfad6.jpeg)
 
 ### Load Tests Result
 
